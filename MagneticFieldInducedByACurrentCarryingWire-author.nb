@@ -1,0 +1,2706 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    117128,       2697]
+NotebookOptionsPosition[    112126,       2542]
+NotebookOutlinePosition[    113750,       2593]
+CellTagsIndexPosition[    113414,       2581]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Magnetic Field Induced by a Current-Carrying Wire", "DemoTitle",
+ CellChangeTimes->{
+  3.6114176085460453`*^9, {3.611597605444895*^9, 3.611597605948936*^9}, 
+   3.611622184830917*^9, 3.611622225686018*^9}],
+
+Cell[CellGroupData[{
+
+Cell["", "InitializationSection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mu", "=", 
+   RowBox[{".0000001", " ", "4", " ", "Pi"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "t_", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "t"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"unittan", "[", "t_", "]"}], "=", 
+   RowBox[{"TrigExpand", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"f", "'"}], "[", "t", "]"}], "/", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"f", "'"}], "[", "t", "]"}], ".", 
+       RowBox[{
+        RowBox[{"f", "'"}], "[", "t", "]"}]}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"unitnorm", "[", "t_", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"unitbinorm", "[", "t_", "]"}], "=", 
+   RowBox[{"Cross", "[", 
+    RowBox[{
+     RowBox[{"unittan", "[", "t", "]"}], ",", 
+     RowBox[{"unitnorm", "[", "t", "]"}]}], "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.611597630803854*^9, 3.611597635391526*^9}, {
+  3.611597869586598*^9, 3.611597877356017*^9}},
+ CellID->32712695]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"a", "\[LessEqual]", "m"}], ",", 
+     RowBox[{"Grid", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Show", "[", 
+          RowBox[{
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"Evaluate", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"a", " ", 
+                 RowBox[{"Cos", "[", "s", "]"}]}], ",", 
+                RowBox[{"a", " ", 
+                 RowBox[{"Sin", "[", "s", "]"}]}], ",", "z"}], "}"}], "]"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"s", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"ViewPoint", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "6", ",", "7"}], "}"}]}], ",", 
+             RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+             RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"Thickness", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                  "47746.482927568606", "*", "a", "*", "current", "*", "mu"}],
+                   ")"}], "/", 
+                 RowBox[{"m", "^", "2"}]}], "]"}], "}"}]}]}], "]"}], ",", 
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"r", " ", "m", " ", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+               RowBox[{"m", " ", "r", " ", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"r", ",", "0", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+             RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", "op", "]"}], ",", "Gray", ",", 
+                RowBox[{"Specularity", "[", 
+                 RowBox[{"White", ",", "40"}], "]"}], ",", 
+                RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+               "}"}]}]}], "]"}], ",", 
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"m", " ", "r", " ", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+               RowBox[{"m", " ", "r", " ", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ",", "10"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"r", ",", "0", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+             RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", "op", "]"}], ",", "Gray", ",", 
+                RowBox[{"Specularity", "[", 
+                 RowBox[{"White", ",", "40"}], "]"}], ",", 
+                RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+               "}"}]}]}], "]"}], ",", 
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"m", " ", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+               RowBox[{"m", " ", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ",", "s"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"s", ",", "0", ",", "10"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+             RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", "op", "]"}], ",", 
+                RowBox[{"Specularity", "[", 
+                 RowBox[{"White", ",", "40"}], "]"}], ",", 
+                RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+               "}"}]}]}], "]"}], ",", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"a", " ", 
+                    RowBox[{"Cos", "[", "s", "]"}]}], ",", 
+                    RowBox[{"a", " ", 
+                    RowBox[{"Sin", "[", "s", "]"}]}], ",", "z"}], "}"}], ",", 
+                  " ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"a", " ", 
+                    RowBox[{"Cos", "[", "s", "]"}]}], ",", 
+                    RowBox[{"a", " ", 
+                    RowBox[{"Sin", "[", "s", "]"}]}], ",", "z"}], "}"}], "+", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"a", " ", "current", " ", 
+                    RowBox[{"Sin", "[", "s", "]"}]}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], ",", 
+                    FractionBox[
+                    RowBox[{"a", " ", "current", " ", 
+                    RowBox[{"Cos", "[", "s", "]"}]}], 
+                    RowBox[{"Abs", "[", "current", "]"}]], ",", "0"}], 
+                    "}"}]}]}], "}"}], "]"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"s", ",", " ", "40"}], "}"}]}], "]"}], "]"}], ",", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"k", ",", "0", ",", "5"}], "}"}], ",", " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"k", ",", "0", ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "k", ",", "5"}], "}"}], ",", " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "k", ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], ",",
+                     " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "k"}], "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], ",",
+                     " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "k"}], "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "12"}], ",", "12"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "12"}], ",", "12"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "10"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", 
+            RowBox[{"1.5", 
+             RowBox[{"{", 
+              RowBox[{"300", ",", "300"}], "}"}]}]}], ",", " ", 
+           RowBox[{"SphericalRegion", "\[Rule]", " ", "True"}]}], "]"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Text", "@", 
+          RowBox[{"Row", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<B\>\"", ",", "Italic"}], "]"}], ",", "\"\< = \>\"",
+              ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"NSolve", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Integrate", "[", 
+                    RowBox[{
+                    RowBox[{"B", " ", "a"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"s", ",", "0", ",", 
+                    RowBox[{"2", " ", "Pi"}]}], "}"}]}], "]"}], "\[Equal]", 
+                   RowBox[{"current", " ", 
+                    RowBox[{
+                    RowBox[{"a", "^", "2"}], "/", 
+                    RowBox[{"m", "^", "2"}]}], " ", "mu"}]}], ",", "B"}], 
+                 "]"}], "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "\"\< Teslas\>\""}], "}"}],
+            "]"}]}], "}"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Grid", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Show", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"Evaluate", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"a", " ", 
+                 RowBox[{"Cos", "[", "s", "]"}]}], ",", 
+                RowBox[{"a", " ", 
+                 RowBox[{"Sin", "[", "s", "]"}]}], ",", "z"}], "}"}], "]"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"s", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"ViewPoint", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "6", ",", "7"}], "}"}]}], ",", 
+             RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+             RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"Thickness", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"47746.482927568606", "*", "current", "*", "mu"}], 
+                  ")"}], "/", "a"}], "]"}], "}"}]}]}], "]"}], ",", 
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"r", " ", "m", " ", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+               RowBox[{"m", " ", "r", " ", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"r", ",", "0", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+             RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", "op", "]"}], ",", "Gray", ",", 
+                RowBox[{"Specularity", "[", 
+                 RowBox[{"White", ",", "40"}], "]"}], ",", 
+                RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+               "}"}]}]}], "]"}], ",", 
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"m", " ", "r", " ", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+               RowBox[{"m", " ", "r", " ", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ",", "10"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"r", ",", "0", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+             RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", "op", "]"}], ",", "Gray", ",", 
+                RowBox[{"Specularity", "[", 
+                 RowBox[{"White", ",", "40"}], "]"}], ",", 
+                RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+               "}"}]}]}], "]"}], ",", 
+           RowBox[{"ParametricPlot3D", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"m", " ", 
+                RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+               RowBox[{"m", " ", 
+                RowBox[{"Sin", "[", "t", "]"}]}], ",", "s"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"s", ",", "0", ",", "10"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", 
+               RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+             RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+             RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", "op", "]"}], ",", 
+                RowBox[{"Specularity", "[", 
+                 RowBox[{"White", ",", "40"}], "]"}], ",", 
+                RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}]}], 
+               "}"}]}]}], "]"}], ",", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"a", " ", 
+                    RowBox[{"Cos", "[", "s", "]"}]}], ",", 
+                    RowBox[{"a", " ", 
+                    RowBox[{"Sin", "[", "s", "]"}]}], ",", "z"}], "}"}], ",", 
+                  " ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"a", " ", 
+                    RowBox[{"Cos", "[", "s", "]"}]}], ",", 
+                    RowBox[{"a", " ", 
+                    RowBox[{"Sin", "[", "s", "]"}]}], ",", "z"}], "}"}], "+", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"a", " ", "current", " ", 
+                    RowBox[{"Sin", "[", "s", "]"}]}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], ",", 
+                    FractionBox[
+                    RowBox[{"a", " ", "current", " ", 
+                    RowBox[{"Cos", "[", "s", "]"}]}], 
+                    RowBox[{"Abs", "[", "current", "]"}]], ",", "0"}], 
+                    "}"}]}]}], "}"}], "]"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"s", ",", " ", "40"}], "}"}]}], "]"}], "]"}], ",", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", " ", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"k", ",", "0", ",", "5"}], "}"}], ",", " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"k", ",", "0", ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "k", ",", "5"}], "}"}], ",", " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "k", ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], ",",
+                     " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Graphics3D", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", 
+               RowBox[{".005", " ", 
+                RowBox[{"Abs", "[", "current", "]"}]}], "]"}], ",", 
+              RowBox[{"Hue", "[", ".05", "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", 
+               RowBox[{".001", "current"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"Arrow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "k"}], "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], ",",
+                     " ", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "k"}], "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", 
+                    RowBox[{"k", "/", 
+                    RowBox[{"Sqrt", "[", "2", "]"}]}], ",", "5"}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"5", "current"}], 
+                    RowBox[{"Abs", "[", "current", "]"}]]}], "}"}]}]}], "}"}],
+                   "]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", 
+                  RowBox[{"-", "m"}], ",", " ", "m"}], "}"}]}], "]"}]}], 
+             "}"}], "]"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "12"}], ",", "12"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "12"}], ",", "12"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "10"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"Axes", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"ImageSize", "\[Rule]", 
+            RowBox[{"1.5", 
+             RowBox[{"{", 
+              RowBox[{"300", ",", "300"}], "}"}]}]}], ",", 
+           RowBox[{"SphericalRegion", "\[Rule]", " ", "True"}]}], "]"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Text", "@", 
+          RowBox[{"Row", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<B\>\"", ",", "Italic"}], "]"}], ",", "\"\< = \>\"",
+              ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"NSolve", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Integrate", "[", 
+                    RowBox[{
+                    RowBox[{"B", " ", "a"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"s", ",", "0", ",", 
+                    RowBox[{"2", " ", "Pi"}]}], "}"}]}], "]"}], "\[Equal]", 
+                   RowBox[{"current", " ", "mu"}]}], ",", "B"}], "]"}], "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "\"\< Teslas\>\""}], "}"}],
+            "]"}]}], "\[IndentingNewLine]", "}"}]}], "}"}], "]"}]}], "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "a", ",", ".001", ",", "\"\<Amperian loop radius (meters)\>\""}], "}"}],
+      ",", ".001", ",", "10", ",", ".001", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "->", "Medium"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"current", ",", ".001", ",", "\"\<current (amperes)\>\""}], 
+      "}"}], ",", 
+     RowBox[{"-", "10"}], ",", "10", ",", ".001", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "->", "Medium"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m", ",", "1", ",", "\"\<wire radius (meters)\>\""}], "}"}], 
+     ",", "1", ",", "10", ",", ".001", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "->", "Medium"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "z", ",", "5", ",", "\"\<height of Amperian loop (meters)\>\""}], "}"}],
+      ",", "0", ",", "10", ",", ".001", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "->", "Medium"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"op", ",", ".75", ",", "\"\<opacity\>\""}], "}"}], ",", "0.1", 
+     ",", "1", ",", ".001", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "->", "Medium"}]}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Top"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"SaveDefinitions", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.611417627172908*^9, 3.611597736130837*^9, {3.611597783444738*^9, 
+   3.611597784824356*^9}, {3.611597917868101*^9, 3.611597958410645*^9}, {
+   3.611597994987653*^9, 3.611598041100918*^9}, {3.611598074807682*^9, 
+   3.611598079200479*^9}, {3.611598149090932*^9, 3.6115981575864487`*^9}, {
+   3.611610806339292*^9, 3.611610863179427*^9}, {3.611610914067898*^9, 
+   3.611610952751883*^9}, 3.611611023518066*^9, 3.611611060177731*^9, {
+   3.6116225846222143`*^9, 3.611622589334094*^9}, {3.611622658782775*^9, 
+   3.611622665061122*^9}, {3.6119363712303333`*^9, 3.611936380333316*^9}, 
+   3.611936411455336*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.001, $CellContext`current$$ = 
+    0.001, $CellContext`m$$ = 1, $CellContext`op$$ = 0.75, $CellContext`z$$ = 
+    5, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 0.001, "Amperian loop radius (meters)"}, 0.001,
+       10, 0.001}, {{
+       Hold[$CellContext`current$$], 0.001, "current (amperes)"}, -10, 10, 
+      0.001}, {{
+       Hold[$CellContext`m$$], 1, "wire radius (meters)"}, 1, 10, 0.001}, {{
+       Hold[$CellContext`z$$], 5, "height of Amperian loop (meters)"}, 0, 10, 
+      0.001}, {{
+       Hold[$CellContext`op$$], 0.75, "opacity"}, 0.1, 1, 0.001}}, 
+    Typeset`size$$ = {450., {232.34375, 237.65625}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$7484$$ = 0, $CellContext`current$7485$$ = 
+    0, $CellContext`m$7486$$ = 0, $CellContext`z$7487$$ = 
+    0, $CellContext`op$7488$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0.001, $CellContext`current$$ = 
+        0.001, $CellContext`m$$ = 1, $CellContext`op$$ = 
+        0.75, $CellContext`z$$ = 5}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$7484$$, 0], 
+        Hold[$CellContext`current$$, $CellContext`current$7485$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$7486$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$7487$$, 0], 
+        Hold[$CellContext`op$$, $CellContext`op$7488$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      If[$CellContext`a$$ <= $CellContext`m$$, 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`a$$ $CellContext`current$$ \
+$CellContext`mu)/$CellContext`m$$^2]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ \
+($CellContext`a$$^2/$CellContext`m$$^2) $CellContext`mu, $CellContext`B], 1], 
+                1], 2], " Teslas"}]]}}], 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`current$$ \
+$CellContext`mu)/$CellContext`a$$]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ $CellContext`mu, \
+$CellContext`B], 1], 1], 2], " Teslas"}]]}}]], 
+      "Specifications" :> {{{$CellContext`a$$, 0.001, 
+          "Amperian loop radius (meters)"}, 0.001, 10, 0.001, Appearance -> 
+         "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`current$$, 0.001, "current (amperes)"}, -10, 
+         10, 0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`m$$, 1, "wire radius (meters)"}, 1, 10, 
+         0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`z$$, 5, "height of Amperian loop (meters)"}, 
+         0, 10, 0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`op$$, 0.75, "opacity"}, 0.1, 1, 0.001, 
+         Appearance -> "Labeled", ImageSize -> Medium}}, 
+      "Options" :> {ControlPlacement -> Top}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{493., {332., 337.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`mu = 1.2566370614359173`*^-6}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->936728428]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell[TextData[{
+ "An infinitely long uniform wire carrying current induces a magnetic field \
+(more precisely, magnetic induction) ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]], "InlineMath"],
+ " that varies with the distance from the wire and the amount of current. Amp\
+\[EGrave]re's law is used to determine the magnetic field at any point on the \
+imaginary Amperian loop at a given distance from the wire with a given amount \
+of current. Amp",
+ "\[EGrave]",
+ "re's law is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[ContourIntegral]", 
+     RowBox[{
+      RowBox[{"B", "\[CenterDot]", "d"}], "\[InvisibleSpace]", 
+      "\[ScriptL]"}]}], "=", 
+    RowBox[{
+     SubscriptBox["\[Mu]", "0"], 
+     SubscriptBox["I", "enc"]}]}], TraditionalForm]], "InlineMath"],
+ " and can be solved for ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]], "InlineMath"],
+ " to get ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"B", "=", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["\[Mu]", "0"], 
+      SubscriptBox["I", "enc"]}], 
+     RowBox[{"2", " ", "\[Pi]", " ", "a"}]]}], TraditionalForm]], 
+  "InlineMath"],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Mu]", "0"], TraditionalForm]], "InlineMath"],
+ " is the vacuum permeability constant, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["I", "enc"], TraditionalForm]], "InlineMath"],
+ " is the current enclosed by the Amperian loop, and ",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]], "InlineMath"],
+ " is the radius of the Amperian loop. This Demonstration lets you vary the \
+relative height of the Amperian loop, the Amperian loop radius, current, wire \
+radius, and opacity of the wire to see each variable's effect on the strength \
+of the induced magnetic field, measured in teslas (T)."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.6114179509392815`*^9, {3.6114180097881656`*^9, 3.6114180140595922`*^9}, {
+   3.611418090768263*^9, 3.6114183622374067`*^9}, {3.611598422900926*^9, 
+   3.611598423088397*^9}, {3.61159848351416*^9, 3.611598524518368*^9}, {
+   3.611598556257224*^9, 3.61159865127275*^9}, {3.611598700141239*^9, 
+   3.611598733564355*^9}, {3.6115987948435717`*^9, 3.6115988085747967`*^9}, {
+   3.611622143079195*^9, 3.611622154512196*^9}, {3.611622288916132*^9, 
+   3.611622316984383*^9}, {3.611622370345422*^9, 3.611622447681418*^9}, {
+   3.6116224847880907`*^9, 3.6116225002981253`*^9}, {3.611936444718606*^9, 
+   3.611936478052331*^9}, {3.611936635830599*^9, 3.611936642209713*^9}},
+ CellID->764167391]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 5.5, $CellContext`current$$ = 
+    5., $CellContext`m$$ = 1, $CellContext`op$$ = 0.75, $CellContext`z$$ = 5, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 5.5, "Amperian loop radius (meters)"}, 0.001, 
+      10, 0.001}, {{
+       Hold[$CellContext`current$$], 5., "current (amperes)"}, -10, 10, 
+      0.001}, {{
+       Hold[$CellContext`m$$], 1, "wire radius (meters)"}, 1, 10, 0.001}, {{
+       Hold[$CellContext`z$$], 5, "height of Amperian loop (meters)"}, 0, 10, 
+      0.001}, {{
+       Hold[$CellContext`op$$], 0.75, "opacity"}, 0.1, 1, 0.001}}, 
+    Typeset`size$$ = {450., {232.34375, 237.65625}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$7561$$ = 0, $CellContext`current$7562$$ = 
+    0, $CellContext`m$7563$$ = 0, $CellContext`z$7564$$ = 
+    0, $CellContext`op$7565$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 5.5, $CellContext`current$$ = 
+        5., $CellContext`m$$ = 1, $CellContext`op$$ = 0.75, $CellContext`z$$ = 
+        5}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$7561$$, 0], 
+        Hold[$CellContext`current$$, $CellContext`current$7562$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$7563$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$7564$$, 0], 
+        Hold[$CellContext`op$$, $CellContext`op$7565$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      If[$CellContext`a$$ <= $CellContext`m$$, 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`a$$ $CellContext`current$$ \
+$CellContext`mu)/$CellContext`m$$^2]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ \
+($CellContext`a$$^2/$CellContext`m$$^2) $CellContext`mu, $CellContext`B], 1], 
+                1], 2], " Teslas"}]]}}], 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`current$$ \
+$CellContext`mu)/$CellContext`a$$]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ $CellContext`mu, \
+$CellContext`B], 1], 1], 2], " Teslas"}]]}}]], 
+      "Specifications" :> {{{$CellContext`a$$, 5.5, 
+          "Amperian loop radius (meters)"}, 0.001, 10, 0.001, Appearance -> 
+         "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`current$$, 5., "current (amperes)"}, -10, 10,
+          0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`m$$, 1, "wire radius (meters)"}, 1, 10, 
+         0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`z$$, 5, "height of Amperian loop (meters)"}, 
+         0, 10, 0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`op$$, 0.75, "opacity"}, 0.1, 1, 0.001, 
+         Appearance -> "Labeled", ImageSize -> Medium}}, 
+      "Options" :> {ControlPlacement -> Top}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{493., {332., 337.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`mu = 1.2566370614359173`*^-6}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->392073239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 
+    5.5, $CellContext`current$$ = -5, $CellContext`m$$ = 
+    1, $CellContext`op$$ = 0.75, $CellContext`z$$ = 5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 5.5, "Amperian loop radius (meters)"}, 0.001, 
+      10, 0.001}, {{
+       Hold[$CellContext`current$$], -5, "current (amperes)"}, -10, 10, 
+      0.001}, {{
+       Hold[$CellContext`m$$], 1, "wire radius (meters)"}, 1, 10, 0.001}, {{
+       Hold[$CellContext`z$$], 5, "height of Amperian loop (meters)"}, 0, 10, 
+      0.001}, {{
+       Hold[$CellContext`op$$], 0.75, "opacity"}, 0.1, 1, 0.001}}, 
+    Typeset`size$$ = {450., {232.34375, 237.65625}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$7638$$ = 0, $CellContext`current$7639$$ = 
+    0, $CellContext`m$7640$$ = 0, $CellContext`z$7641$$ = 
+    0, $CellContext`op$7642$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 
+        5.5, $CellContext`current$$ = -5, $CellContext`m$$ = 
+        1, $CellContext`op$$ = 0.75, $CellContext`z$$ = 5}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$7638$$, 0], 
+        Hold[$CellContext`current$$, $CellContext`current$7639$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$7640$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$7641$$, 0], 
+        Hold[$CellContext`op$$, $CellContext`op$7642$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      If[$CellContext`a$$ <= $CellContext`m$$, 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`a$$ $CellContext`current$$ \
+$CellContext`mu)/$CellContext`m$$^2]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ \
+($CellContext`a$$^2/$CellContext`m$$^2) $CellContext`mu, $CellContext`B], 1], 
+                1], 2], " Teslas"}]]}}], 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`current$$ \
+$CellContext`mu)/$CellContext`a$$]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ $CellContext`mu, \
+$CellContext`B], 1], 1], 2], " Teslas"}]]}}]], 
+      "Specifications" :> {{{$CellContext`a$$, 5.5, 
+          "Amperian loop radius (meters)"}, 0.001, 10, 0.001, Appearance -> 
+         "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`current$$, -5, "current (amperes)"}, -10, 10,
+          0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`m$$, 1, "wire radius (meters)"}, 1, 10, 
+         0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`z$$, 5, "height of Amperian loop (meters)"}, 
+         0, 10, 0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`op$$, 0.75, "opacity"}, 0.1, 1, 0.001, 
+         Appearance -> "Labeled", ImageSize -> Medium}}, 
+      "Options" :> {ControlPlacement -> Top}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{493., {332., 337.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`mu = 1.2566370614359173`*^-6}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1095098877],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 5.5, $CellContext`current$$ = 
+    5, $CellContext`m$$ = 8., $CellContext`op$$ = 0.75, $CellContext`z$$ = 5, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 5.5, "Amperian loop radius (meters)"}, 0.001, 
+      10, 0.001}, {{
+       Hold[$CellContext`current$$], 5, "current (amperes)"}, -10, 10, 
+      0.001}, {{
+       Hold[$CellContext`m$$], 8., "wire radius (meters)"}, 1, 10, 0.001}, {{
+       Hold[$CellContext`z$$], 5, "height of Amperian loop (meters)"}, 0, 10, 
+      0.001}, {{
+       Hold[$CellContext`op$$], 0.75, "opacity"}, 0.1, 1, 0.001}}, 
+    Typeset`size$$ = {450., {232.34375, 237.65625}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$7715$$ = 0, $CellContext`current$7716$$ = 
+    0, $CellContext`m$7717$$ = 0, $CellContext`z$7718$$ = 
+    0, $CellContext`op$7719$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 5.5, $CellContext`current$$ = 
+        5, $CellContext`m$$ = 8., $CellContext`op$$ = 0.75, $CellContext`z$$ = 
+        5}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$7715$$, 0], 
+        Hold[$CellContext`current$$, $CellContext`current$7716$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$7717$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$7718$$, 0], 
+        Hold[$CellContext`op$$, $CellContext`op$7719$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      If[$CellContext`a$$ <= $CellContext`m$$, 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`a$$ $CellContext`current$$ \
+$CellContext`mu)/$CellContext`m$$^2]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ \
+($CellContext`a$$^2/$CellContext`m$$^2) $CellContext`mu, $CellContext`B], 1], 
+                1], 2], " Teslas"}]]}}], 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`current$$ \
+$CellContext`mu)/$CellContext`a$$]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ $CellContext`mu, \
+$CellContext`B], 1], 1], 2], " Teslas"}]]}}]], 
+      "Specifications" :> {{{$CellContext`a$$, 5.5, 
+          "Amperian loop radius (meters)"}, 0.001, 10, 0.001, Appearance -> 
+         "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`current$$, 5, "current (amperes)"}, -10, 10, 
+         0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`m$$, 8., "wire radius (meters)"}, 1, 10, 
+         0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`z$$, 5, "height of Amperian loop (meters)"}, 
+         0, 10, 0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`op$$, 0.75, "opacity"}, 0.1, 1, 0.001, 
+         Appearance -> "Labeled", ImageSize -> Medium}}, 
+      "Options" :> {ControlPlacement -> Top}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{493., {332., 337.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`mu = 1.2566370614359173`*^-6}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1391970949],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 
+    5.5, $CellContext`current$$ = -5, $CellContext`m$$ = 
+    8, $CellContext`op$$ = 0.75, $CellContext`z$$ = 5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 5.5, "Amperian loop radius (meters)"}, 0.001, 
+      10, 0.001}, {{
+       Hold[$CellContext`current$$], -5, "current (amperes)"}, -10, 10, 
+      0.001}, {{
+       Hold[$CellContext`m$$], 8, "wire radius (meters)"}, 1, 10, 0.001}, {{
+       Hold[$CellContext`z$$], 5, "height of Amperian loop (meters)"}, 0, 10, 
+      0.001}, {{
+       Hold[$CellContext`op$$], 0.75, "opacity"}, 0.1, 1, 0.001}}, 
+    Typeset`size$$ = {450., {232.34375, 237.65625}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`a$7792$$ = 0, $CellContext`current$7793$$ = 
+    0, $CellContext`m$7794$$ = 0, $CellContext`z$7795$$ = 
+    0, $CellContext`op$7796$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 
+        5.5, $CellContext`current$$ = -5, $CellContext`m$$ = 
+        8, $CellContext`op$$ = 0.75, $CellContext`z$$ = 5}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$7792$$, 0], 
+        Hold[$CellContext`current$$, $CellContext`current$7793$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$7794$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$7795$$, 0], 
+        Hold[$CellContext`op$$, $CellContext`op$7796$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      If[$CellContext`a$$ <= $CellContext`m$$, 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`a$$ $CellContext`current$$ \
+$CellContext`mu)/$CellContext`m$$^2]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ \
+($CellContext`a$$^2/$CellContext`m$$^2) $CellContext`mu, $CellContext`B], 1], 
+                1], 2], " Teslas"}]]}}], 
+        Grid[{{
+           Show[
+            ParametricPlot3D[
+             
+             Evaluate[{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+               Sin[$CellContext`s], $CellContext`z$$}], {$CellContext`s, 0, 2 
+              Pi}, ViewPoint -> {0, 6, 7}, Boxed -> False, PlotRange -> All, 
+             PlotStyle -> {
+               
+               Thickness[(
+                 47746.482927568606` $CellContext`current$$ \
+$CellContext`mu)/$CellContext`a$$]}], 
+            
+            ParametricPlot3D[{$CellContext`r $CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 0}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ $CellContext`r 
+              Cos[$CellContext`t], $CellContext`m$$ $CellContext`r 
+              Sin[$CellContext`t], 10}, {$CellContext`r, 0, 
+              1}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], Gray, 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            
+            ParametricPlot3D[{$CellContext`m$$ 
+              Cos[$CellContext`t], $CellContext`m$$ 
+              Sin[$CellContext`t], $CellContext`s}, {$CellContext`s, 0, 
+              10}, {$CellContext`t, 0, 2 Pi}, Mesh -> None, SphericalRegion -> 
+             True, PlotStyle -> {
+               Opacity[$CellContext`op$$], 
+               Specularity[White, 40], Lighting -> "Neutral"}], 
+            Graphics3D[
+             Table[{
+               
+               Arrow[{{$CellContext`a$$ Cos[$CellContext`s], $CellContext`a$$ 
+                  Sin[$CellContext`s], $CellContext`z$$}, {$CellContext`a$$ 
+                   Cos[$CellContext`s], $CellContext`a$$ 
+                   Sin[$CellContext`s], $CellContext`z$$} + \
+{-($CellContext`a$$ $CellContext`current$$ Sin[$CellContext`s]/
+                    Abs[$CellContext`current$$]), $CellContext`a$$ \
+$CellContext`current$$ Cos[$CellContext`s]/Abs[$CellContext`current$$], 
+                   0}}]}, {$CellContext`s, 40}]], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k, 0, 5}, {$CellContext`k, 0, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{
+                  0, $CellContext`k, 5}, {0, $CellContext`k, 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {$CellContext`k/Sqrt[2], $CellContext`k/Sqrt[2], 5} + {
+                   0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            Graphics3D[{
+              Arrowheads[0.005 Abs[$CellContext`current$$]], 
+              Hue[0.05], 
+              Thickness[0.001 $CellContext`current$$], 
+              Table[{
+                
+                Arrow[{{(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                   5}, {(-$CellContext`k)/Sqrt[2], $CellContext`k/Sqrt[2], 
+                    5} + {0, 0, 5 $CellContext`current$$/
+                    Abs[$CellContext`current$$]}}]}, {$CellContext`k, \
+-$CellContext`m$$, $CellContext`m$$}]}], 
+            PlotRange -> {{-12, 12}, {-12, 12}, {0, 10}}, Axes -> False, 
+            ImageSize -> 1.5 {300, 300}, SphericalRegion -> True]}, {
+           Text[
+            Row[{
+              Style["B", Italic], " = ", 
+              Part[
+               Part[
+                Part[
+                 NSolve[
+                 Integrate[$CellContext`B $CellContext`a$$, {$CellContext`s, 
+                    0, 2 Pi}] == $CellContext`current$$ $CellContext`mu, \
+$CellContext`B], 1], 1], 2], " Teslas"}]]}}]], 
+      "Specifications" :> {{{$CellContext`a$$, 5.5, 
+          "Amperian loop radius (meters)"}, 0.001, 10, 0.001, Appearance -> 
+         "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`current$$, -5, "current (amperes)"}, -10, 10,
+          0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`m$$, 8, "wire radius (meters)"}, 1, 10, 
+         0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`z$$, 5, "height of Amperian loop (meters)"}, 
+         0, 10, 0.001, Appearance -> "Labeled", ImageSize -> 
+         Medium}, {{$CellContext`op$$, 0.75, "opacity"}, 0.1, 1, 0.001, 
+         Appearance -> "Labeled", ImageSize -> Medium}}, 
+      "Options" :> {ControlPlacement -> Top}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{493., {332., 337.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`mu = 1.2566370614359173`*^-6}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->168889425]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell["\<\
+Snapshot 1: current running in the opposite direction\
+\>", "DetailNotes",
+ CellChangeTimes->{{3.61141840387157*^9, 3.611418404332616*^9}},
+ CellID->161676771],
+
+Cell["\<\
+Snapshot 2: measuring strength of magnetic field within wire\
+\>", "DetailNotes",
+ CellID->540704111],
+
+Cell["\<\
+Snapshot 3: measuring strength of magnetic field within wire with opposite \
+current\
+\>", "DetailNotes",
+ CellID->196472860],
+
+Cell["\<\
+As the Amperian loop increases in radius, the loop encloses more current, \
+which increases the integral in Amp\[EGrave]re's law. When the Amperian loop \
+is less than the radius of the wire, the loop does not enclose all of the \
+current running through the wire, so the strength of the magnetic field \
+within the wire is directly proportional to the radius of the Amperian loop. \
+When the Amperian loop is greater than the radius of the wire, the loop does \
+enclose all of the current running through the wire, so the strength of the \
+magnetic field within the wire is inversely proportional to the radius of the \
+Amperian loop.\
+\>", "DetailNotes",
+ CellChangeTimes->{{3.6115988562447844`*^9, 3.611598861184001*^9}, {
+   3.611622774416854*^9, 3.611622775255218*^9}, {3.6116228175028477`*^9, 
+   3.611622838341085*^9}, {3.611936516159857*^9, 3.6119365397524977`*^9}, 
+   3.611936650177936*^9},
+ CellID->76059444],
+
+Cell["\<\
+The cylinder represents a current-carrying wire. The circle represents the \
+Amperian loop that determines the strength of the magnetic field through Amp\
+\[EGrave]re's law. The arrows within the wire represent current vectors. The \
+arrows on the Amperian loop show the direction of the magnetic field at that \
+point. \
+\>", "DetailNotes",
+ CellChangeTimes->{{3.611598901593788*^9, 3.611598949520371*^9}, {
+   3.611599155726074*^9, 3.611599165033633*^9}, {3.61193654412291*^9, 
+   3.611936550407542*^9}, 3.611936655079238*^9},
+ CellID->139593945],
+
+Cell["\<\
+Changes in height and opacity have no effect on the strength of the magnetic \
+field. The three variables that affect the strength of the magnetic field are \
+the strength of the current, the radius of the Amperian loop, and the radius \
+of the current-carrying wire. The direction of the magnetic field is shown by \
+the tangent vectors of the Amperian loop. The direction can also be found \
+using the right-hand rule.\
+\>", "DetailNotes",
+ CellChangeTimes->{{3.611598901593788*^9, 3.611598959441485*^9}, {
+  3.611599193968272*^9, 3.611599194284037*^9}, {3.61162287716643*^9, 
+  3.611622879883453*^9}, {3.611936557203021*^9, 3.611936565877368*^9}},
+ CellID->341016375],
+
+Cell["Reference", "DetailNotes",
+ CellChangeTimes->{{3.6115991973435783`*^9, 3.6115991975120153`*^9}},
+ CellID->549045829],
+
+Cell[TextData[{
+ "[1] D. J. Griffiths, ",
+ StyleBox["Introduction to Electrodynamics",
+  FontSlant->"Italic"],
+ ", Vol. 3, Upper Saddle River, NJ: Prentice Hall, 1999."
+}], "DetailNotes",
+ CellChangeTimes->{{3.611599199525835*^9, 3.611599220968287*^9}, {
+  3.6116229338898077`*^9, 3.611622962746304*^9}, {3.611936573042528*^9, 
+  3.611936606314763*^9}, {3.611936672654557*^9, 3.61193667265657*^9}},
+ CellID->607956368],
+
+Cell["\<\
+Special thanks to the University of Illinois NetMath Program and the \
+Mathematics department at William Fremd High School.\
+\>", "DetailNotes",
+ CellChangeTimes->{{3.611599199525835*^9, 3.611599220968287*^9}, {
+  3.6116229338898077`*^9, 3.611622962746304*^9}, {3.611936573042528*^9, 
+  3.611936606314763*^9}, {3.611936672654557*^9, 3.611936673073464*^9}},
+ CellID->751975572]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.6114177391551046`*^9},
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.611417743050494*^9},
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9, 
+  3.611599229019849*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.6114177450586953`*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["", "SearchTerms",
+ CellChangeTimes->{{3.611417754059595*^9, 3.6114177550246916`*^9}},
+ CellID->220726874],
+
+Cell["wire", "SearchTerms",
+ CellID->287928044],
+
+Cell["ampere", "SearchTerms",
+ CellID->324265860],
+
+Cell["current", "SearchTerms",
+ CellID->86713405],
+
+Cell["current carrying wire", "SearchTerms",
+ CellID->11380236],
+
+Cell["magnetic field", "SearchTerms",
+ CellID->47217269],
+
+Cell["magnetism", "SearchTerms",
+ CellID->369592800]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection"],
+
+Cell[TextData[ButtonBox["Amp\[EGrave]re's Force Law: Force between Parallel \
+Currents",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://demonstrations.wolfram.com/\
+AmperesForceLawForceBetweenParallelCurrents/"], None},
+ ButtonNote->
+  "http://demonstrations.wolfram.com/\
+AmperesForceLawForceBetweenParallelCurrents/"]], "RelatedLinks",
+ CellChangeTimes->{{3.6103033641111455`*^9, 3.6103033641141467`*^9}, {
+  3.6103034121413083`*^9, 3.6103034121433086`*^9}},
+ CellID->63220447],
+
+Cell[TextData[ButtonBox["Electric Current",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://demonstrations.wolfram.com/ElectricCurrent/"], None},
+ ButtonNote->
+  "http://demonstrations.wolfram.com/ElectricCurrent/"]], "RelatedLinks",
+ CellChangeTimes->{{3.6103033641111455`*^9, 3.6103033641141467`*^9}, {
+  3.6103034121413083`*^9, 3.6103034388182793`*^9}},
+ CellID->157281038],
+
+Cell[TextData[ButtonBox["Current-Carrying Wire in Uniform Magnetic Field",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://demonstrations.wolfram.com/\
+CurrentCarryingWireInUniformMagneticField/"], None},
+ ButtonNote->
+  "http://demonstrations.wolfram.com/\
+CurrentCarryingWireInUniformMagneticField/"]], "RelatedLinks",
+ CellChangeTimes->{{3.6103033641111455`*^9, 3.6103033641141467`*^9}, {
+  3.6103034121413083`*^9, 3.610303454343341*^9}},
+ CellID->267506741]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Daniel Johnson",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Daniel+Johnson"]\
+, None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Daniel+Johnson"]
+}], "Author",
+ CellChangeTimes->{{3.6114178971128993`*^9, 3.6114178971188993`*^9}},
+ CellID->28309276]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 598},
+WindowMargins->{{12, Automatic}, {Automatic, 8}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[103991, 2303, 312, 8, 29, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[104306, 2313, 721, 17, 29, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[105030, 2332, 340, 11, 29, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[105373, 2345, 637, 15, 29, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[106013, 2362, 885, 22, 29, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[106901, 2386, 393, 10, 29, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[107297, 2398, 1507, 32, 29, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[108807, 2432, 908, 21, 29, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 112506, 2554},
+ {"RotateAndZoomIn3D", 112616, 2557},
+ {"DragLocators", 112727, 2560},
+ {"CreateAndDeleteLocators", 112844, 2563},
+ {"SliderZoom", 112959, 2566},
+ {"GamepadControls", 113066, 2569},
+ {"AutomaticAnimation", 113181, 2572},
+ {"BookmarkAnimation", 113299, 2575}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 211, 3, 108, "DemoTitle"],
+Cell[CellGroupData[{
+Cell[815, 29, 33, 0, 275, "InitializationSection"],
+Cell[851, 31, 1161, 37, 89, "Input",
+ InitializationCell->True,
+ CellID->32712695]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2049, 73, 29, 0, 243, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[2103, 77, 30270, 704, 1783, "Input"],
+Cell[32376, 783, 13052, 267, 681, "Output",
+ CellID->936728428]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45477, 1056, 36, 0, 181, "ManipulateCaptionSection"],
+Cell[45516, 1058, 2504, 60, 163, "ManipulateCaption",
+ CellID->764167391]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48057, 1123, 28, 0, 179, "ThumbnailSection"],
+Cell[48088, 1125, 13032, 267, 681, "Output",
+ CellID->392073239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61157, 1397, 28, 0, 149, "SnapshotsSection"],
+Cell[61188, 1399, 13045, 269, 681, "Output",
+ CellID->1095098877],
+Cell[74236, 1670, 13033, 267, 681, "Output",
+ CellID->1391970949],
+Cell[87272, 1939, 13044, 269, 681, "Output",
+ CellID->168889425]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100353, 2213, 26, 0, 357, "DetailsSection"],
+Cell[100382, 2215, 169, 4, 23, "DetailNotes",
+ CellID->161676771],
+Cell[100554, 2221, 111, 3, 23, "DetailNotes",
+ CellID->540704111],
+Cell[100668, 2226, 135, 4, 23, "DetailNotes",
+ CellID->196472860],
+Cell[100806, 2232, 929, 15, 119, "DetailNotes",
+ CellID->76059444],
+Cell[101738, 2249, 558, 10, 71, "DetailNotes",
+ CellID->139593945],
+Cell[102299, 2261, 680, 11, 87, "DetailNotes",
+ CellID->341016375],
+Cell[102982, 2274, 122, 2, 23, "DetailNotes",
+ CellID->549045829],
+Cell[103107, 2278, 418, 9, 39, "DetailNotes",
+ CellID->607956368],
+Cell[103528, 2289, 386, 7, 39, "DetailNotes",
+ CellID->751975572]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103951, 2301, 37, 0, 131, "ControlSuggestionsSection"],
+Cell[103991, 2303, 312, 8, 29, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[104306, 2313, 721, 17, 29, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[105030, 2332, 340, 11, 29, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[105373, 2345, 637, 15, 29, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[106013, 2362, 885, 22, 29, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[106901, 2386, 393, 10, 29, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[107297, 2398, 1507, 32, 29, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[108807, 2432, 908, 21, 29, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[109752, 2458, 30, 0, 165, "SearchTermsSection"],
+Cell[109785, 2460, 111, 2, 23, "SearchTerms",
+ CellID->220726874],
+Cell[109899, 2464, 47, 1, 23, "SearchTerms",
+ CellID->287928044],
+Cell[109949, 2467, 49, 1, 23, "SearchTerms",
+ CellID->324265860],
+Cell[110001, 2470, 49, 1, 23, "SearchTerms",
+ CellID->86713405],
+Cell[110053, 2473, 63, 1, 23, "SearchTerms",
+ CellID->11380236],
+Cell[110119, 2476, 56, 1, 23, "SearchTerms",
+ CellID->47217269],
+Cell[110178, 2479, 52, 1, 23, "SearchTerms",
+ CellID->369592800]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[110267, 2485, 31, 0, 149, "RelatedLinksSection"],
+Cell[110301, 2487, 487, 11, 23, "RelatedLinks",
+ CellID->63220447],
+Cell[110791, 2500, 383, 8, 23, "RelatedLinks",
+ CellID->157281038],
+Cell[111177, 2510, 468, 10, 23, "RelatedLinks",
+ CellID->267506741]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111682, 2525, 25, 0, 149, "AuthorSection"],
+Cell[111710, 2527, 388, 11, 23, "Author",
+ CellID->28309276]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
